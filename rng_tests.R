@@ -253,5 +253,28 @@ if(W< 446.5742){
 ### Kolmogorov-Smirnov Test ###
 ###############################
 
+#sort samples
+sort_samp <- sort(samples)
+
+#cdf values for uniform ((x-0)/(1-0))
+Fxi <- sort_samp
+
+#D_n+
+Dnp <- max(abs(seq(n)/n-Fxi))
+
+#D_n-
+Dnm <- max(abs(Fxi-((seq(n)-1)/n)))
+
+#Dn
+Dn = max(Dnp,Dnm)
+
+# Result
+if(Dn< .004294689 ){
+  print("This sample has passed the Kolmogorov-Smirnov test for uniformity")
+} else{
+  print("This sample has failed the Kolmogorov-Smirnov test for uniformity")
+}
+
+
 
 
